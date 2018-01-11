@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25b65de97d02d9f46b25d6743fdd0316, type: 3}
+  m_Name: FirstEvent
+  m_EditorClassIdentifier: 
+  EventName: FirstEvent
+  eventID: 1
+  PromptAudio: {fileID: 8300000, guid: 5074540f6392d444bb67f36b59c1b8be, type: 3}
+  DesiredLine: 1
+  AccessCode: 4512
+  scrambleRequired: 0
+  KindOfScramble: 0
+  EventAudio: {fileID: 8300000, guid: 8dcafceca889d514787d1c3dcb2924e3, type: 3}
+  isInterrupted: 0
+  interruptTime: 0
+  MonitorText: 'FROM: Dr. Allison \n TO: Dr. Aster '

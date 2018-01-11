@@ -1,0 +1,29 @@
+# Operator - Notes
+
+1/3/2018
+
+- Play 4 audio files but only one can be heard at a time ✔
+- Spacebar to switch between the active file ✔
+- P key to pause or unpause file ✔
+- Lights are green when playing, red when paused ✔
+- Scriptable Objects to hold event data ✔
+- Read that data and load in relevant bits ✔
+
+1/8/18
+
+I need to re-write how I'm handling information, because it currently is messy and it's not going to work for when there are 4 calls happening at any time. I think I need a line manager script that does nothing but handles what line has what information, which needs to include data like the code request text and stuff, which is currently in the flipping game manager, which is not great.
+
+I also need to re-design the Scrambler so that you can engage it on multiple lines. That's a thing.
+
+So, let's imagine a Story Event is triggered:
+1) the prompt audio plays and the basic stuff is read in so that the player can activate the call
+Basic stuff = line request, code request, needs to be scrambled, what kind of scramble
+2) When they have successfully done that, the other information is sent to the Line Manager, which in turns forces the audio file to play
+Other stuff = audio file, Text for line monitor (which needs to change), event information (for later)
+
+The Line Manager needs to know:
+
+1) If a line is being used
+2) If a button is clicked it passes a parameter of what number it is, 
+If that line is being used do nothing
+If that line is not being used, AND this is the desired line, say it is in use and run the story event
