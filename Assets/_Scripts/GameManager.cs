@@ -29,15 +29,16 @@ public class GameManager : MonoBehaviour {
 
 	[Header("Current Prompt")]
 	public StoryEvent current = null;
-	public int promptLine;
-	public int promptCode = 0;
-	public bool shouldBeScrambled = false;
-	public bool isScrambled = false;
+	public int DesiredLine;
+	public int AccessCode = 0;
+	public bool scrambleRequired = false;
+	public int KindOfScramble = 0;
 	
 	[Header("State Variables")]
 	public bool beingPrompted;
 	public bool correctLine;
 	public bool correctCode;
+	public bool isScrambled = false;
 
 	void Awake(){
 		/* Singleton Shit */
@@ -62,15 +63,21 @@ public class GameManager : MonoBehaviour {
 	}
 
 	void ReadStoryPrompt(){
-		// tell audio manager what we're listening to
+		// Keep track of current story event
 		current = StoryEvents[EventIndex];
 		// Access Code
-		promptCode = current.AccessCode;
-		Keypad.NewCode(promptCode);
+		AccessCode = current.AccessCode;
+		Keypad.NewCode(AccessCode);
 		// Display Access Code
 		// Later put this in a co-routine so that it delays
-		RequestMonitorText.text = "REQUEST: \n" + promptCode;
-		// Play Prompt Audio
+		RequestMonitorText.text = "REQUEST: \n" + AccessCode;
+		// Desired Line
+		DesiredLine = current.DesiredLine;
+		// Does this prompt say it should be scrambled?
+		scrambleRequired = current.scrambleRequired;
+		// if (scrambleRequired == true){}
+		// Play Prompt Audio, 5 is the int being used for Prompt audio
+		LineManager.SwitchAudioSource(5);
 		LineManager.promptAudioSource.clip = current.PromptAudio;
 		LineManager.promptAudioSource.Play();
 	}
@@ -80,10 +87,12 @@ public class GameManager : MonoBehaviour {
 			beingPrompted = false;
 			LineManager.promptAudioSource.Stop();
 			// Read in the other data, switch to correct audio source
-			LineManager.SwitchAudioSource(promptLine);
-			LineManager.LineMonitorText[promptLine] = current.MonitorText;
-			LineManager.LineAudioSources[promptLine].clip = current.EventAudio;
-			LineManager.LineAudioSources[promptLine].Play();
+			DesiredLine = DesiredLine - 1;
+			LineManager.SwitchAudioSource(DesiredLine);
+			
+			LineManager.LineMonitorText[DesiredLine] = current.MonitorText;
+			LineManager.LineAudioSources[DesiredLine].clip = current.EventAudio;
+			LineManager.LineAudioSources[DesiredLine].Play();
 			EventIndex++;
 		}
 	}

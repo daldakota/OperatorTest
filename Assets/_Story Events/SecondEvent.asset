@@ -13,7 +13,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EventName: SecondEvent
   eventID: 2
-  AccessCode: 9999
+  PromptAudio: {fileID: 8300000, guid: cea6ef6037ae77f4d8167c1181c951a2, type: 3}
   DesiredLine: 2
-  EventAudio: {fileID: 8300000, guid: 9c0430e5866092845a65e724cf64c9ae, type: 3}
+  AccessCode: 9999
   scrambleRequired: 0
+  KindOfScramble: 0
+  EventAudio: {fileID: 8300000, guid: 9c0430e5866092845a65e724cf64c9ae, type: 3}
+  isInterrupted: 0
+  interruptTime: 0
+  MonitorText: 

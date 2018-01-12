@@ -33,13 +33,14 @@ public class LineManager : MonoBehaviour {
 		// Adapt input for the array cos arrays are dumb
 		LineIn = LineIn -1;
 		
-		if (GameManager.instance.beingPrompted == true && LineIn != GameManager.instance.promptLine){
+		if (GameManager.instance.beingPrompted == true && LineIn != GameManager.instance.DesiredLine){
 			// Play a denied sound
 			Debug.Log("NO");
 		}
-		if(LineInUse[LineIn] == false && LineIn == GameManager.instance.promptLine){
+		if(LineInUse[LineIn] == false && (LineIn + 1) == GameManager.instance.DesiredLine){
 			LineInUse[LineIn] = true;
 			GameManager.instance.correctLine = true;
+			SwitchAudioSource(LineIn);
 			GameManager.instance.PlayEvent();
 		}
 		else {
@@ -47,10 +48,23 @@ public class LineManager : MonoBehaviour {
 		}
 	}
 	public void SwitchAudioSource(int desiredAudioSource){
-		// Also switch what text is on the monitor
-		// GameManager.instance.RequestMonitorText.text = LineMonitorText[desiredAudioSource];
-		LineAudioSources[currentAudioSource].volume = 0;
-		LineAudioSources[desiredAudioSource].volume = 1;
+		if (currentAudioSource == 5){
+			promptAudioSource.volume = 0;
+			currentAudioSource = desiredAudioSource;
+		}
+		if (desiredAudioSource == 5){
+			for(int i = 0; i < LineAudioSources.Length; i++){
+				LineAudioSources[i].volume = 0;
+				promptAudioSource.volume = 1;
+				currentAudioSource = 5;
+			}
+		}
+		else {
+			// Also switch what text is on the monitor
+			// GameManager.instance.RequestMonitorText.text = LineMonitorText[desiredAudioSource];
+			LineAudioSources[currentAudioSource].volume = 0;
+			LineAudioSources[desiredAudioSource].volume = 1;
+		}
 		currentAudioSource = desiredAudioSource;
 	}
 }
