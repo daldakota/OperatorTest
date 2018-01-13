@@ -1,14 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
-using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 	/* creates singleton pattern:
 	public = anyone can see it
 	static = anyone can access it */
 	public static GameManager instance = null;
+	
+	private UI_Manager UI_Manager;
 
 	[Header("Game Objects")]
 		// Line Manager
@@ -20,8 +20,6 @@ public class GameManager : MonoBehaviour {
 		// Scrambler
 		public GameObject ScramblerObj;
 		private Scrambler Scrambler;
-		// Request Monitor
-		public Text RequestMonitorText;
 	
 	[Header("Story Events")]
 		public StoryEvent[] StoryEvents;
@@ -47,6 +45,7 @@ public class GameManager : MonoBehaviour {
 		DontDestroyOnLoad(gameObject);
 
 		/* Actual Shit */
+		UI_Manager = GetComponent<UI_Manager>();
 		Keypad = KeypadObject.GetComponent<Keypad>();
 		LineManager = LineManagerObj.GetComponent<LineManager>();
 		Scrambler = ScramblerObj.GetComponent<Scrambler>();
@@ -82,8 +81,8 @@ public class GameManager : MonoBehaviour {
 		Keypad.NewCode(AccessCode);
 		
 		// Display Access Code
-		// Later put this in a co-routine so that it delays
-		RequestMonitorText.text = "REQUEST: \n" + AccessCode;
+		// TODO: put this in a co-routine so that it delays
+		UI_Manager.MonitorPrompt(AccessCode);
 		
 		// Desired Line
 		DesiredLine = current.DesiredLine;

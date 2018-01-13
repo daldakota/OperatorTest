@@ -61,7 +61,7 @@ public class LineManager : MonoBehaviour {
 		}
 		else {
 			// Also switch what text is on the monitor
-			GameManager.instance.RequestMonitorText.text = LineMonitorText[desiredAudioSource];
+			UI_Manager.instance.LineInUpdate(LineMonitorText[desiredAudioSource]);
 			LineAudioSources[currentAudioSource].volume = 0;
 			LineAudioSources[desiredAudioSource].volume = 1;
 		}

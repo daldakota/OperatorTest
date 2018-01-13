@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4868428322280074}
   - component: {fileID: 114558981195059656}
+  - component: {fileID: 114071550082187486}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -40,6 +41,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114071550082187486
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1951038775008896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c68e7a1af78ea046bff064adc25f81e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RequestMonitorObj: {fileID: 0}
 --- !u!114 &114558981195059656
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -54,7 +67,6 @@ MonoBehaviour:
   LineManagerObj: {fileID: 0}
   KeypadObject: {fileID: 0}
   ScramblerObj: {fileID: 0}
-  RequestMonitorText: {fileID: 0}
   StoryEvents:
   - {fileID: 11400000, guid: e01a91fef00e9b443a70b709877d193e, type: 2}
   - {fileID: 11400000, guid: eccde84154777df4b8129f33ec3e3ae5, type: 2}
