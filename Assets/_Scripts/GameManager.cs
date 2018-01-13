@@ -11,34 +11,34 @@ public class GameManager : MonoBehaviour {
 	public static GameManager instance = null;
 
 	[Header("Game Objects")]
-	// Line Manager
-	public GameObject LineManagerObj;
-	private LineManager LineManager;
-	// Keypad
-	public GameObject KeypadObject;
-	private Keypad Keypad;
-	// Scrambler
-	public GameObject ScramblerObj;
-	private Scrambler Scrambler;
-	// Request Monitor
-	public Text RequestMonitorText;
+		// Line Manager
+		public GameObject LineManagerObj;
+		private LineManager LineManager;
+		// Keypad
+		public GameObject KeypadObject;
+		private Keypad Keypad;
+		// Scrambler
+		public GameObject ScramblerObj;
+		private Scrambler Scrambler;
+		// Request Monitor
+		public Text RequestMonitorText;
 	
 	[Header("Story Events")]
-	public StoryEvent[] StoryEvents;
-	private int EventIndex = 0;
+		public StoryEvent[] StoryEvents;
+		private int EventIndex = 0;
 
 	[Header("Current Prompt")]
-	public StoryEvent current = null;
-	public int DesiredLine;
-	public int AccessCode = 0;
-	public bool scrambleRequired = false;
-	public int KindOfScramble = 0;
+		public StoryEvent current = null;
+		public int DesiredLine;
+		public int AccessCode = 0;
+		public bool scrambleRequired = false;
+		public int KindOfScramble = 0;
 	
 	[Header("State Variables")]
-	public bool beingPrompted;
-	public bool correctLine;
-	public bool correctCode;
-	public bool isScrambled = false;
+		public bool beingPrompted;
+		public bool correctLine;
+		public bool correctCode;
+		public bool isScrambled = false;
 
 	void Awake(){
 		/* Singleton Shit */
@@ -76,25 +76,44 @@ public class GameManager : MonoBehaviour {
 	void ReadStoryPrompt(){
 		// Keep track of current story event
 		current = StoryEvents[EventIndex];
+		
 		// Access Code
 		AccessCode = current.AccessCode;
 		Keypad.NewCode(AccessCode);
+		
 		// Display Access Code
 		// Later put this in a co-routine so that it delays
 		RequestMonitorText.text = "REQUEST: \n" + AccessCode;
+		
 		// Desired Line
 		DesiredLine = current.DesiredLine;
+		
 		// Does this prompt say it should be scrambled?
 		scrambleRequired = current.scrambleRequired;
-		// if (scrambleRequired == true){}
+		if (scrambleRequired == true){
+			Scrambler.ScrambleLine = current.DesiredLine;
+			Scrambler.ScrambleType = current.KindOfScramble;
+		}
+		
 		// Play Prompt Audio, 5 is the int being used for Prompt audio
 		LineManager.SwitchAudioSource(5);
 		LineManager.promptAudioSource.clip = current.PromptAudio;
 		LineManager.promptAudioSource.Play();
 	}
 
+	private bool CheckCorrect(){
+		if (
+			correctLine == true
+			&&
+			correctCode == true
+			&&
+			isScrambled == current.scrambleRequired
+		) {return true;}
+		else {return false;}
+	}
+
 	public void PlayEvent(){
-		if (correctLine == true && correctCode == true){
+		if (CheckCorrect() == true){
 			LineManager.promptAudioSource.Stop();
 			// Read in the other data, switch to correct audio source
 			DesiredLine = DesiredLine - 1;

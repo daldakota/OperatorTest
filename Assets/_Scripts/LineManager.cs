@@ -40,7 +40,7 @@ public class LineManager : MonoBehaviour {
 		if(LineInUse[LineIn] == false && (LineIn + 1) == GameManager.instance.DesiredLine){
 			LineInUse[LineIn] = true;
 			GameManager.instance.correctLine = true;
-			SwitchAudioSource(LineIn);
+			// SwitchAudioSource(LineIn);
 			GameManager.instance.PlayEvent();
 		}
 		else {
