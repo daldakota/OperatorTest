@@ -601,9 +601,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb70ee080f0584e47a8e8e5058c19a01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  promptAudioSource: {fileID: 82422431327579216}
   currentAudioSource: 0
   LineAudioSources:
-  - {fileID: 82422431327579216}
   - {fileID: 82397314830495394}
   - {fileID: 82690912587346082}
   - {fileID: 82592526416720506}

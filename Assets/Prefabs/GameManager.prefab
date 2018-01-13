@@ -59,7 +59,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e01a91fef00e9b443a70b709877d193e, type: 2}
   - {fileID: 11400000, guid: eccde84154777df4b8129f33ec3e3ae5, type: 2}
   current: {fileID: 0}
-  promptLine: 0
-  currentCode: 0
-  shouldBeScrambled: 0
+  DesiredLine: 0
+  AccessCode: 0
+  scrambleRequired: 0
+  KindOfScramble: 0
+  beingPrompted: 0
+  correctLine: 0
+  correctCode: 0
   isScrambled: 0
