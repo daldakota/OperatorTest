@@ -27,3 +27,7 @@ The Line Manager needs to know:
 2) If a button is clicked it passes a parameter of what number it is, 
 If that line is being used do nothing
 If that line is not being used, AND this is the desired line, say it is in use and run the story event
+
+1.12.18
+
+Okay, so I think I've got the basic loop working without scrambling, next up is adding Scrambling. This begs the question of how I want the scrambler to work - do I want it to be another row of buttons where you select each line? I **could** do that, but that feels very blase. Do I instead keep it as it is? No, because that design creates a situation where it can only be scrambling one line at a time... do I create a second scrambler? How the heck am I going to lock these in place? I like the idea of a second scrambler, but then I have to keep track of two scramblers? I haven't even figured out the first one works yet!

@@ -59,7 +59,18 @@ public class GameManager : MonoBehaviour {
 	}
 
 	void ResetCurrents(){
+		current = null;
+		DesiredLine = 0;
+		AccessCode = 0;
+		scrambleRequired = false;
+		KindOfScramble = 0;
+	}
 
+	void ResetState(){
+		beingPrompted = false;
+		correctLine = false;
+		correctCode = false;
+		isScrambled = false;
 	}
 
 	void ReadStoryPrompt(){
@@ -84,16 +95,16 @@ public class GameManager : MonoBehaviour {
 
 	public void PlayEvent(){
 		if (correctLine == true && correctCode == true){
-			beingPrompted = false;
 			LineManager.promptAudioSource.Stop();
 			// Read in the other data, switch to correct audio source
 			DesiredLine = DesiredLine - 1;
 			LineManager.SwitchAudioSource(DesiredLine);
-			
 			LineManager.LineMonitorText[DesiredLine] = current.MonitorText;
 			LineManager.LineAudioSources[DesiredLine].clip = current.EventAudio;
 			LineManager.LineAudioSources[DesiredLine].Play();
 			EventIndex++;
+			ResetCurrents();
+			ResetState();
 		}
 	}
 	
