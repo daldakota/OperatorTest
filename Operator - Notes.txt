@@ -35,3 +35,7 @@ Okay, so I think I've got the basic loop working without scrambling, next up is 
 ## 1.13.18
 
 I did it! The Scrambler is done! So that's the major mechanics, next up is the **Codebook** UI, then fix the Request Monitor.
+
+Stretch Goal: VU meters. That would be SO COOL.
+
+The Codebook prototype UI is done, as is a 3D layout prototype.
