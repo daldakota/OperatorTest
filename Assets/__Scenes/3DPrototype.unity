@@ -997,27 +997,27 @@ Prefab:
       objectReference: {fileID: 1841983605}
     - target: {fileID: 1899926106856056, guid: 2cc40f5e168f4f345ac9eeb42adc73e6, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224572499960718136, guid: 2cc40f5e168f4f345ac9eeb42adc73e6,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 224649978512253794, guid: 2cc40f5e168f4f345ac9eeb42adc73e6,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 224844194373703010, guid: 2cc40f5e168f4f345ac9eeb42adc73e6,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 224905208822038818, guid: 2cc40f5e168f4f345ac9eeb42adc73e6,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 224572499960718136, guid: 2cc40f5e168f4f345ac9eeb42adc73e6,
         type: 2}
@@ -1481,7 +1481,7 @@ Light:
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 0.7176471, g: 0.8627451, b: 0.90588236, a: 1}
-  m_Intensity: 5.5
+  m_Intensity: 2.75
   m_Range: 2.15
   m_SpotAngle: 100
   m_CookieSize: 10
